@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>BMI History</h2>
+
+<table class="table table-striped mt-4">
+
+<tr>
+<th>Date</th>
+<th>Weight</th>
+<th>Height</th>
+<th>BMI</th>
+<th>Category</th>
+</tr>
+
+{% for record in records %}
+
+<tr>
+<td>{{ record.date|date:"M d, Y" }}</td>
+<td>{{ record.weight }}</td>
+<td>{{ record.height }}</td>
+<td>{{ record.bmi }}</td>
+<td>{{ record.category }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<canvas id="bmiChart" width="400" height="200"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const ctx = document.getElementById('bmiChart');
+
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: {{ dates|safe }},
+        datasets: [{
+            label: 'BMI Progress',
+            data: {{ bmi_values|safe }},
+            borderWidth: 2
+        }]
+    }
+});
+</script>
+
+<a href="/dashboard/" class="btn btn-primary mt-3">Back</a>
+
+{% endblock %}

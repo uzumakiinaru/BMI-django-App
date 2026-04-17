@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>BMI Calculator</h2>
+
+<div class="card shadow p-4 mt-3" style="max-width:500px">
+
+<form method="POST">
+
+{% csrf_token %}
+
+<div class="mb-3">
+
+<label>Weight (kg)</label>
+<input type="number" name="weight" step="0.1" required>
+
+</div>
+
+<div class="mb-3">
+
+<label>Height (cm)</label>
+<input type="number" name="height" step="0.01" required>
+<small class="text-muted">Enter height in centimeters (e.g., 170)</small>
+
+</div>
+
+<button class="btn btn-primary w-100">Calculate BMI</button>
+
+</form>
+
+</div>
+
+{% if bmi %}
+
+<div class="alert alert-info mt-3">
+
+<h4>Your BMI: {{ bmi }}</h4>
+<p>Category: {{ category }}</p>
+<p>{{ advice }}</p>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

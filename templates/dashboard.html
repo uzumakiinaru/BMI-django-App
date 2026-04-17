@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Dashboard</h2>
+
+<div class="row mt-4">
+
+<!-- dito be profile -->
+<div class="col-md-4">
+
+<div class="card shadow text-center">
+
+<div class="card-body">
+
+<h4>User Profile</h4>
+
+<p><strong>Username:</strong> {{ user.username }}</p>
+<p><strong>Email:</strong> {{ user.email }}</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- dito boy calcu -->
+<div class="col-md-4">
+
+<div class="card shadow text-center">
+
+<div class="card-body">
+
+<h5>BMI Calculator</h5>
+
+<p>Calculate your BMI quickly.</p>
+
+<a href="/bmi/" class="btn btn-primary">Open</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- history pangatlo wag na hanapin -->
+<div class="col-md-4">
+
+<div class="card shadow text-center">
+
+<div class="card-body">
+
+<h5>BMI History</h5>
+
+<p>View your previous BMI records.</p>
+
+<a href="/history/" class="btn btn-success">View</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}
